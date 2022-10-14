@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Table(name = "admin")
 public class Admin implements Serializable {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String email;
