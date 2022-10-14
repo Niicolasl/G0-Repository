@@ -1,7 +1,8 @@
 package com.usa.mintic.reto3.controller;
 
-import com.usa.mintic.reto3.model.Reservation;
+import com.usa.mintic.reto3.model.Admin;
 import com.usa.mintic.reto3.model.Score;
+import com.usa.mintic.reto3.service.AdminService;
 import com.usa.mintic.reto3.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,38 +12,38 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/Score")
-public class ScoreController {
+@RequestMapping("/api/Admin")
+public class AdminController {
 
     @Autowired
-    private ScoreService scoreService;
+    private AdminService adminService;
 
     @GetMapping("/all")
-    public List<Score> getAll(){
-        return scoreService.getAll();
+    public List<Admin> getAll(){
+        return adminService.getAll();
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Score save(@RequestBody Score s){
-        return scoreService.save(s);
+    public Admin save(@RequestBody Admin s){
+        return adminService.save(s);
     }
 
     @GetMapping("/{id}")
-    public Optional<Score> getScore(@PathVariable("id")int scoreId){
-        return scoreService.getScore(scoreId);
+    public Optional<Admin> getAdmin(@PathVariable("id")int adminId){
+        return adminService.getAdmin(adminId);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Score update(@RequestBody Score score) {
-        return scoreService.update(score);
+    public Admin update(@RequestBody Admin admin) {
+        return adminService.update(admin);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int scoreId) {
-        return scoreService.delete(scoreId);
+    public boolean delete(@PathVariable("id") int adminId) {
+        return adminService.delete(adminId);
     }
 
 }

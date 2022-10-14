@@ -19,7 +19,7 @@ public class CategoryService {
         return categoryRepository.getAll();
     }
 
-    public Optional<Category> getMachine(int id){
+    public Optional<Category> getCategory(int id){
         return categoryRepository.getCategory(id);
     }
 
