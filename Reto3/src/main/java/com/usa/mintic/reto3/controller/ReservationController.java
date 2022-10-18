@@ -3,6 +3,8 @@ package com.usa.mintic.reto3.controller;
 ;
 import com.usa.mintic.reto3.model.Message;
 import com.usa.mintic.reto3.model.Reservation;
+import com.usa.mintic.reto3.model.personalizado.CountClient;
+import com.usa.mintic.reto3.model.personalizado.StatusAmount;
 import com.usa.mintic.reto3.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,4 +48,20 @@ public class ReservationController {
         return reservationService.delete(reservationId);
     }
 
+    @GetMapping("/report-clients")
+        public List<CountClient> getReservationReportClient(){
+            return reservationService.getTopClients();
+        }
+
+    @GetMapping("/report-status")
+    public StatusAmount getReservationStatus(){
+        return reservationService.getReservationStatusReport();
+    }
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationReportDates(@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo){
+        return reservationService.getReservationPeriod(dateOne,dateTwo);
+    }
+
 }
+
+
